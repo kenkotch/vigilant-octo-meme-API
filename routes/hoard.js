@@ -23,6 +23,20 @@ router.get('/', (req, res, next) => {
     })
 })
 
+// curl -H "Content-Type: application/json" -X POST -d '{"name": "kdjkfdjs", "description": "ksdjklsdjf", "imgUrl": "kjsdfksjdf", "barcode": "klsdjflkdsjf"}' http://localhost:8181/hoard
+router.post('/', function (req, res, next) {
+  const { name, description, barcode, imgUrl } = req.body
+  knex('hoard')
+    .insert({
+      name: name,
+      description: description,
+      barcode: barcode,
+      img_url: imgUrl
+    })
+    .then(() => res.sendStatus(200))
+    .catch((err) => next(err))
+})
+
 /***
 router.get('/', function (req, res, next) {
   knex('hoarding')

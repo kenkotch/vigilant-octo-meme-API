@@ -3,15 +3,6 @@ var router = express.Router();
 const humps = require('humps')
 const knex = require('../knex')
 
-const fake = [
-  {
-    id: 1,
-    name: 'Yamaha CS 80',
-    description: 'Best low pass filter ever',
-    imgUrl: 'http://res.cloudinary.com/akey7/image/upload/c_scale,h_578/v1509817453/IMAG0635_qtqd07.jpg'
-  }
-]
-
 router.get('/', (req, res, next) => {
   knex('hoard')
     .select('id', 'barcode', 'name', 'description', 'img_url')
